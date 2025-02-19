@@ -1,0 +1,20 @@
+name: Practice Example
+on: workflow_dispatch
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Linting the project
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tetsing the project
+        run: npm run test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building the project
+        run: npm run build
