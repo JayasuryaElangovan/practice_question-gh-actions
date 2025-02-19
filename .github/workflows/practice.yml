@@ -4,17 +4,41 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: installing Dependencies
+        run: npm ci
       - name: Linting the project
         run: npm run lint
   test:
     needs: lint
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: installing Dependencies
+        run: npm ci
       - name: Tetsing the project
         run: npm run test
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: installing Dependencies
+        run: npm ci
       - name: Building the project
         run: npm run build
